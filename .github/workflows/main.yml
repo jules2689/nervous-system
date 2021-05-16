@@ -10,9 +10,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.0
-    - name: Run the default task
+        bundler-cache: true
+    - name: Run tests
       run: |
-        gem install bundler -v 2.2.3
-        bundle install
         bundle exec rake
