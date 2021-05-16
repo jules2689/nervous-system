@@ -1,6 +1,18 @@
-require "rubygems"
-require "bundler/setup"
-require 'standalone_migrations'
-require 'tasks/standalone_migrations'
-ActiveRecord::Base.schema_format = :sql
-StandaloneMigrations::Tasks.load_tasks
+# frozen_string_literal: true
+
+require "bundler/gem_tasks"
+require "rake/testtask"
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/*_test.rb"]
+end
+
+require "rubocop/rake_task"
+
+RuboCop::RakeTask.new
+
+task default: %i[test rubocop]
+
+require "nervous/system/tasks"

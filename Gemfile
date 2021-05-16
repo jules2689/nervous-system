@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
-gem "rake"
-gem "kiba"
-gem "dotenv"
+gemspec
 
-gem "activerecord"
-gem "standalone_migrations", "~> 6.0.0"
-gem "sqlite3"
+gem "rake", "~> 13.0"
+gem "minitest", "~> 5.0"
+gem "rubocop", "~> 0.80"
+gem "dotenv"
 
 # Sources
 gem "todoist-ruby", git: "https://github.com/jules2689/todoist-ruby.git"

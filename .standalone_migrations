@@ -1,0 +1,5 @@
+db:
+  migrate: lib/db/migrate/
+  schema: lib/db/schema.rb
+config:
+  database: lib/db/config.yml

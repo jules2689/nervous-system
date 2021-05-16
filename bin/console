@@ -1,8 +1,15 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-ENV["RACK_ENV"] ||= "development"
+require "bundler/setup"
+require "nervous/system"
 
-require 'irb'
-require_relative "../src/nervous_system"
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
 
-IRB.start
+# (If you use this, don't forget to add pry to your Gemfile!)
+# require "pry"
+# Pry.start
+
+require "irb"
+IRB.start(__FILE__)
