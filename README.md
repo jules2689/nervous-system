@@ -1,7 +1,8 @@
 # Nervous::System
 
-The Nervous System is a tool for connecting information sources to a centralized notes location (aka the Brain)
-It's primary goal is to allow information sources to be added and removed dynamically, and to provide a unified interface for accessing information.
+The Nervous System is a tool for connecting information sources to a centralized notes location (aka the Brain).
+
+Its primary goal is to allow information sources to be added and removed dynamically, and to provide a unified interface for accessing information.
 
 ## Installation & Usage
 
