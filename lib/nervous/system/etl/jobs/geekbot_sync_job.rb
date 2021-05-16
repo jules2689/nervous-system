@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require "geekbot"
+
 module Nervous
   module System
     module ETL
       module Jobs
-        module TodoistSyncJob
+        module GeekbotSyncJob
           module_function
 
           def setup(config)
@@ -17,20 +19,20 @@ module Nervous
               extend Kiba::Common::DSLExtensions::Logger
 
               pre_process do
-                logger.info "Running Todoist ETL with backend #{config[:backend]}"
+                logger.info "Running Geekbot ETL with backend #{config[:backend]}"
               end
 
-              source ETL::Sources::Todoist, config[:env], logger
-              transform ETL::Transformers::Todoist::ActiveRecord, logger
+              source ETL::Sources::Geekbot, config[:env], logger
+              transform ETL::Transformers::Geekbot::ActiveRecord, logger
 
               case config[:backend]
               when Nervous::System::SUPPORTED_NOTION_BACKEND
-                transform ETL::Transformers::Todoist::Notion, logger
-                destination ETL::Destinations::Notion, config[:env], config[:env]["NOTION_TODOIST_ID"], logger
+                transform ETL::Transformers::Geekbot::Notion, logger
+                destination ETL::Destinations::Notion, config[:env], config[:env]["NOTION_GEEKBOT_ID"], logger
               end
 
               post_process do
-                logger.info "Finished processing todoist"
+                logger.info "Finished processing Geekbot"
               end
             end
           end

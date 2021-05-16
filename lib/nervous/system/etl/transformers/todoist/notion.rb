@@ -50,7 +50,7 @@ module Nervous
                 "number": record.project_id.to_i
               }
 
-              OpenStruct.new(record: record, properties: properties)
+              OpenStruct.new(record: record, children: {}, properties: properties)
             end
           end
         end

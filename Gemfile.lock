@@ -13,6 +13,7 @@ PATH
   specs:
     nervous-system (0.1.0)
       activerecord
+      geekbot
       kiba
       kiba-common
       rake
@@ -62,6 +63,11 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
+    geekbot (0.1.1)
+      faraday
+      faraday_middleware
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     kiba (4.0.0)
