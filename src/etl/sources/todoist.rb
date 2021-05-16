@@ -1,10 +1,17 @@
 require 'todoist'
 
-module Etl
+module ETL
   module Sources
     class Todoist
       def initialize(env)
         @client = ::Todoist::Client.create_client_by_token(env["TODOIST_TOKEN"])
+      end
+
+      def each
+        items.values.each do |item|
+          puts item
+          yield(item)
+        end
       end
 
       def items
@@ -22,7 +29,11 @@ module Etl
 
       def section(id)
         @sections ||= {}
-        @sections[id] ||= @client.api_helper.get_response("/sections/get", section_id: id)["section"]
+        @sections[id] ||= begin
+          if (section = @client.api_helper.get_response("/sections/get", section_id: id)["section"])
+            OpenStruct.new(section)
+          end
+        end
       rescue ::Todoist::Util::NetworkHelper::NetworkError => e
         puts "Could not get section #{id} : #{e}"
         nil

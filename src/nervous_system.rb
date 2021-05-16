@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler/setup"
 require "active_record"
+require "kiba"
 require "dotenv/load"
 
 ROOT = File.expand_path("../../", __FILE__)
