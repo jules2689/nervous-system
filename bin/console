@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+ENV["RACK_ENV"] ||= "development"
+
+require 'irb'
+require_relative "../src/nervous_system"
+
+IRB.start
