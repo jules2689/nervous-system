@@ -8,7 +8,12 @@ It's primary goal is to allow information sources to be added and removed dynami
 1. Create a Gemfile and add the following Gem:
 
 ```ruby
+# frozen_string_literal: true
+
+source "https://rubygems.org"
 gem 'nervous-system'
+gem "todoist-ruby", git: "https://github.com/jules2689/todoist-ruby.git"
+gem "dotenv" # Only need this if you want to run with your env vars in .env file
 ```
 
 2. Create a `run.rb` file and add:
@@ -23,6 +28,29 @@ Kiba.run(job)
 ```ruby
 # frozen_string_literal: true
 require "nervous/system/tasks"
+```
+
+4. [Optional] Add Tokens and other environments variables to a `.env` file, or to your environment. Make sure to gitignore the `.env` file
+
+5. Add a `db/config.yml` file with the following content:
+```yml
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
 ```
 
 4. Run `bundle install`
