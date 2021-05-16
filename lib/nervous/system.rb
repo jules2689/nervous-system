@@ -14,6 +14,10 @@ module Nervous
   module System
     class Error < StandardError; end
 
+    SUPPORTED_BACKENDS = [
+      SUPPORTED_NOTION_BACKEND = :notion
+    ]
+
     def self.root
       File.expand_path("../../", __FILE__)
     end

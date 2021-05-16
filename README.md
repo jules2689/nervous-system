@@ -20,7 +20,7 @@ gem "dotenv" # Only need this if you want to run with your env vars in .env file
 
 ```ruby
 require 'nervous/system'
-job = Nervous::System::ETL::Jobs::TodoistSyncJob.setup(ENV)
+job = Nervous::System::ETL::Jobs::TodoistSyncJob.setup(backend: :notion, env: ENV)
 Kiba.run(job)
 ```
 
