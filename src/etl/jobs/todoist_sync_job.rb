@@ -11,14 +11,8 @@ module ETL
 
           source ETL::Sources::Todoist, ENV
           transform ETL::Transformers::TodoistActiveRecord
-          # transform SomeOtherTransform, transform_config...
-
-          # # alternate block form
-          # transform do |row|
-          #   # return row, modified
-          # end
-
-          # destination SomeDestination, destination_config...
+          transform ETL::Transformers::TodoistNotion
+          destination ETL::Destinations::NotionTodoist, ENV
 
           post_process do
             puts "Finished processing todoist"

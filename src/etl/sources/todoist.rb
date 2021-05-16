@@ -9,7 +9,6 @@ module ETL
 
       def each
         items.values.each do |item|
-          puts item
           yield(item)
         end
       end

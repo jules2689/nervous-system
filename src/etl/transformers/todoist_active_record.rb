@@ -11,6 +11,7 @@ module ETL
         record.due_date = due_date(row["due"])
         record.raw_data = row.to_json
         record.save!
+        record
       end
 
       def due_date(due)
