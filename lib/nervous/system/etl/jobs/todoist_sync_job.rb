@@ -21,12 +21,12 @@ module Nervous
               end
 
               source ETL::Sources::Todoist, config[:env], logger
-              transform ETL::Transformers::TodoistActiveRecord, logger
+              transform ETL::Transformers::Todoist::ActiveRecord, logger
 
               case config[:backend]
               when Nervous::System::SUPPORTED_NOTION_BACKEND
-                transform ETL::Transformers::TodoistNotion, logger
-                destination ETL::Destinations::NotionTodoist, config[:env], logger
+                transform ETL::Transformers::Todoist::Notion, logger
+                destination ETL::Destinations::Notion::Todoist, config[:env], logger
               end
 
               post_process do

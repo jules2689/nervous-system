@@ -6,7 +6,7 @@ module Nervous
       module Destinations
         class Base < ETL::Base
           def final_log(message)
-            @logger.info "└── [#{self.class.name.split('::').last}] #{message}"
+            @logger.info "└── [#{self.class.name.split('::')[-2]}] #{message}"
           end
         end
       end
