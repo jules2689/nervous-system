@@ -8,3 +8,15 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  NewCops: enable

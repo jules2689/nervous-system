@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nervous
   module System
     module ETL
@@ -24,14 +26,13 @@ module Nervous
             }
 
             if record.due_date
-              # TODO Add a Start Date
+              # TODO: Add a Start Date
               # "start": "2021-04-26",
-              # 
+              #
               properties["Reminder"] = {
                 "date": { "start": record.due_date.strftime("%Y-%m-%d") }
               }
             end
-
 
             properties["Status"] = {
               "select": {

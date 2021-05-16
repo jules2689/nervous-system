@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 module Nervous
   module System
     module ETL
       module Jobs
         module TodoistSyncJob
           module_function
-          
+
           def setup(config)
             if config[:backend] && !Nervous::System::SUPPORTED_BACKENDS.include?(config[:backend])
-              raise "Unsupported backend: #{config[:backend]}. Supported backends: #{Nervous::System::SUPPORTED_BACKENDS.join(', ')}"
+              raise "Unsupported backend: #{config[:backend]}. " \
+                "Supported backends: #{Nervous::System::SUPPORTED_BACKENDS.join(", ")}"
             end
 
             Kiba.parse do

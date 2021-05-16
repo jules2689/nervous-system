@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TodoistRecord < ApplicationRecord
-  self.table_name = 'todoist_records'
+  self.table_name = "todoist_records"
 
   validates :project_id, presence: true
 

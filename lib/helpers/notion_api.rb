@@ -1,6 +1,8 @@
-require 'net/http'
-require 'uri'
-require 'json'
+# frozen_string_literal: true
+
+require "net/http"
+require "uri"
+require "json"
 
 module Helpers
   class NotionAPI
@@ -46,11 +48,11 @@ module Helpers
       request["Authorization"] = "Bearer #{@token}"
       request["Notion-Version"] = NOTION_VERSION
       req_options = {
-        use_ssl: request.uri.scheme == "https",
+        use_ssl: request.uri.scheme == "https"
       }
 
       yield(request) if block_given?
-      
+
       response = Net::HTTP.start(request.uri.hostname, request.uri.port, req_options) do |http|
         http.request(request)
       end

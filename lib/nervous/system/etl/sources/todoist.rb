@@ -1,4 +1,6 @@
-require 'todoist'
+# frozen_string_literal: true
+
+require "todoist"
 
 module Nervous
   module System
@@ -9,14 +11,12 @@ module Nervous
             @client = ::Todoist::Client.create_client_by_token(env["TODOIST_TOKEN"])
           end
 
-          def each
-            items.values.each do |item|
-              yield(item)
-            end
+          def each(&block)
+            items.each_value(&block)
           end
 
           def items
-            @client.sync_items.collection.each do |id, item|
+            @client.sync_items.collection.map do |id, item|
               item.project = project(item.project_id)
               item.section = section(item.section_id) if item.section_id
               [id, item]

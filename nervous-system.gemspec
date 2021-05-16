@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Connecting sources of informatiton to a centralized notes location."
   spec.description   = <<~DESC
-  The Nervous System is a tool for connecting information sources to a centralized notes location (aka the Brain)
-  It's primary goal is to allow information sources to be added and removed dynamically, and to provide a unified interface for accessing information.
+    The Nervous System is a tool for connecting information sources to a centralized notes location (aka the Brain)
+    It's primary goal is to allow information sources to be added and removed dynamically, and to provide a unified interface for accessing information.
   DESC
-  
+
   spec.homepage      = "https://github.com/jules2689/nervous-system"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
@@ -33,10 +33,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rake"
-  spec.add_dependency "kiba"
   spec.add_dependency "activerecord"
-  spec.add_dependency "standalone_migrations", "~> 6.0.0"
+  spec.add_dependency "kiba"
+  spec.add_dependency "rake"
   spec.add_dependency "sqlite3"
+  spec.add_dependency "standalone_migrations", "~> 6.0.0"
   spec.add_dependency "todoist-ruby"
 end
