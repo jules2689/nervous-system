@@ -11,7 +11,7 @@ It's primary goal is to allow information sources to be added and removed dynami
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-gem 'nervous-system'
+gem 'nervous-system', git: "https://github.com/jules2689/nervous-system.git"
 gem "todoist-ruby", git: "https://github.com/jules2689/todoist-ruby.git"
 gem "dotenv" # Only need this if you want to run with your env vars in .env file
 ```
