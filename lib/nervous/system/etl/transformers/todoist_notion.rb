@@ -4,8 +4,9 @@ module Nervous
   module System
     module ETL
       module Transformers
-        class TodoistNotion
+        class TodoistNotion < Base
           def process(record)
+            log("Transforming to Notion Properties")
             properties = {}
 
             properties["Note Title"] = {

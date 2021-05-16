@@ -4,8 +4,17 @@ module Nervous
   module System
     module ETL
       module Transformers
-        class TodoistActiveRecord
+        class TodoistActiveRecord < Base
+          def initialize(logger)
+            @logger = logger
+          end
+
+          def log(message)
+            @logger.info "├── #{message}"
+          end
+
           def process(row)
+            log("Saving row to database")
             record = TodoistRecord.find_or_initialize_by(external_id: row.id)
             record.title = row.content
             record.project_id = row.project_id

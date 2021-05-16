@@ -6,13 +6,17 @@ module Nervous
   module System
     module ETL
       module Sources
-        class Todoist
-          def initialize(env)
+        class Todoist < Base
+          def initialize(env, logger)
             @client = ::Todoist::Client.create_client_by_token(env["TODOIST_TOKEN"])
+            super(logger)
           end
 
           def each(&block)
-            items.each_value(&block)
+            items.values.each do |item|
+              first_log("Processing #{item.id}")
+              block.call(item)
+            end
           end
 
           def items

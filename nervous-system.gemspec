@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activerecord"
   spec.add_dependency "kiba"
+  spec.add_dependency "kiba-common"
   spec.add_dependency "rake"
   spec.add_dependency "sqlite3"
   spec.add_dependency "standalone_migrations", "~> 6.0.0"

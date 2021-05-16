@@ -14,21 +14,23 @@ module Nervous
             end
 
             Kiba.parse do
+              extend Kiba::Common::DSLExtensions::Logger
+
               pre_process do
-                puts "Running Todoist ETL with backend #{config[:backend]}"
+                logger.info "Running Todoist ETL with backend #{config[:backend]}"
               end
 
-              source ETL::Sources::Todoist, config[:env]
-              transform ETL::Transformers::TodoistActiveRecord
+              source ETL::Sources::Todoist, config[:env], logger
+              transform ETL::Transformers::TodoistActiveRecord, logger
 
               case config[:backend]
               when Nervous::System::SUPPORTED_NOTION_BACKEND
-                transform ETL::Transformers::TodoistNotion
-                destination ETL::Destinations::NotionTodoist, config[:env]
+                transform ETL::Transformers::TodoistNotion, logger
+                destination ETL::Destinations::NotionTodoist, config[:env], logger
               end
 
               post_process do
-                puts "Finished processing todoist"
+                logger.info "Finished processing todoist"
               end
             end
           end
