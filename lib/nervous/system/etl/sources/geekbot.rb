@@ -25,15 +25,13 @@ module Nervous
 
           def standups
             params = { standup_id: @standup_id }
-            if time = GeekbotRecord.all.pluck(:timestamp).max
+            if (time = GeekbotRecord.all.pluck(:timestamp).max)
               params[:after] = time
             end
 
             reports = @client.index_reports(params: params).body
 
-            if reports.empty?
-              @logger.warn("No reports found for #{params.to_json}")
-            end
+            @logger.warn("No reports found for #{params.to_json}") if reports.empty?
 
             reports
           end

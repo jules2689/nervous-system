@@ -9,7 +9,7 @@ rescue LoadError
 end
 require "active_record"
 require "kiba"
-require 'kiba-common/dsl_extensions/logger'
+require "kiba-common/dsl_extensions/logger"
 
 module Nervous
   module System

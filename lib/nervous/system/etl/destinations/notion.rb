@@ -14,12 +14,12 @@ module Nervous
           def write(row)
             notion_id = row.record.notion_id
             response = if notion_id && !notion_id.empty?
-                        log("Updating Notion Page #{notion_id}")
-                        @client.update_page(notion_id, properties: row.properties)
-                      else
-                        log("Creating Notion Page for #{row.record.title}")
-                        @client.create_page({ "database_id" => @collection_id }, children: row.children, properties: row.properties)
-                      end
+                         log("Updating Notion Page #{notion_id}")
+                         @client.update_page(notion_id, properties: row.properties)
+                       else
+                         log("Creating Notion Page for #{row.record.title}")
+                         @client.create_page({ "database_id" => @collection_id }, children: row.children, properties: row.properties)
+                       end
 
             case response["object"]
             when "page"

@@ -50,8 +50,8 @@ module Helpers
         {
           id: page_id,
           table: "block",
-          path: ["format", "page_icon"],
-          command: "set", "args": url,
+          path: %w[format page_icon],
+          command: "set", "args": url
         }
       ]
       uri = URI.parse("https://www.notion.so/api/v3/saveTransactions")
@@ -72,9 +72,9 @@ module Helpers
             id: extract_id(SecureRandom.hex(16)),
             shardId: 955_090,
             spaceId: @space_id,
-            operations: body,
-          },
-        ],
+            operations: body
+          }
+        ]
       }
       request.body = payload.to_json
 
@@ -85,6 +85,29 @@ module Helpers
       JSON.parse(response.body)
     end
 
+    # Taken from https://github.com/danmurphy1217/notion-ruby/blob/c12da85857a3d4a34f66f5ce5c02a92daa81ca21/lib/notion_api/core.rb#L75
+    # MIT License
+
+    # Copyright (c) 2020 Dan Murphy
+
+    # Permission is hereby granted, free of charge, to any person obtaining a copy
+    # of this software and associated documentation files (the "Software"), to deal
+    # in the Software without restriction, including without limitation the rights
+    # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    # copies of the Software, and to permit persons to whom the Software is
+    # furnished to do so, subject to the following conditions:
+
+    # The above copyright notice and this permission notice shall be included in all
+    # copies or substantial portions of the Software.
+
+    # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    # SOFTWARE.
+    # rubocop:disable Metrics/PerceivedComplexity
     def extract_id(url_or_id)
       # ! parse and clean the URL or ID object provided.
       # ! url_or_id -> the block ID or URL : ``str``
@@ -94,7 +117,7 @@ module Helpers
       if (url_or_id.length == 36) && ((url_or_id.split("-").length == 5) && !http_or_https)
         # passes if url_or_id is perfectly formatted already...
         url_or_id
-      elsif (http_or_https && (url_or_id.split("-").last.length == 32)) || (!http_or_https && (url_or_id.length == 32)) || (collection_view_match)
+      elsif (http_or_https && (url_or_id.split("-").last.length == 32)) || (!http_or_https && (url_or_id.length == 32)) || collection_view_match
         # passes if either:
         # 1. a URL is passed as url_or_id and the ID at the end is 32 characters long or
         # 2. a URL is not passed and the ID length is 32 [aka unformatted]
@@ -113,6 +136,7 @@ module Helpers
         raise ArgumentError, "Expected a Notion page URL or a page ID. Please consult the documentation for further information."
       end
     end
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def perform_request(request)
       request["Authorization"] = "Bearer #{@token}"

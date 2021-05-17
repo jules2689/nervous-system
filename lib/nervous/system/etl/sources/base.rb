@@ -6,7 +6,7 @@ module Nervous
       module Sources
         class Base < ETL::Base
           def first_log(message)
-            @logger.info "┌── [#{self.class.name.split('::').last}] #{message}"
+            @logger.info "┌── [#{self.class.name.split("::").last}] #{message}"
           end
         end
       end

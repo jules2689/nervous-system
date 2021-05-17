@@ -6,7 +6,6 @@ module Nervous
       module Transformers
         module Todoist
           class ActiveRecord < Base
-
             def process(row)
               log("Saving row to database")
               record = TodoistRecord.find_or_initialize_by(external_id: row.id)

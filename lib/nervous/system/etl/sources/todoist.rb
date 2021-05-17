@@ -13,7 +13,7 @@ module Nervous
           end
 
           def each(&block)
-            items.values.each do |item|
+            items.each_value do |item|
               first_log("Processing #{item.id}")
               block.call(item)
             end

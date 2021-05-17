@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGeekbotRecords < ActiveRecord::Migration[6.0]
   def change
     create_table :geekbot_records do |t|
