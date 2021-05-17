@@ -31,7 +31,10 @@ Kiba.run(job)
 require "nervous/system/tasks"
 ```
 
-4. [Optional] Add Tokens and other environments variables to a `.env` file, or to your environment. Make sure to gitignore the `.env` file
+4. Add Tokens and other environments variables to a `.env` file, or to your environment
+- Make sure to gitignore the `.env` file.
+- You should provide the tokens specified below under the [Tokens and Env Vars](#tokens-and-env-vars) section
+
 
 5. Add a `db/config.yml` file with the following content:
 ```yml
@@ -78,3 +81,38 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Nervous::System project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/nervous-system/blob/master/CODE_OF_CONDUCT.md).
+
+## Tokens and Env Vars
+
+| Name | What is it? | How do I get it? |
+| --- | --- | --- |
+| **Notion** | | |
+| `NOTION_TOKEN` | An access token for your Notion Integration, the official API | https://developers.notion.com/ |
+| `NOTION_UNOFFICIAL_TOKEN` | An access token for the unofficial Notion API. Used to fill in gaps from the official API | See below |
+| `NOTION_SPACE_ID` | The Space ID for use with the unofficial API. | See below |
+| **Geekbot** | | |
+| `GEEKBOT_ACCESS_TOKEN` | Access token for Geekbot, if used. | https://geekbot.com/dashboard/api-webhooks |
+| `GEEKBOT_STANDUP_ID` | The Standup you wish to sync, if needed | From the URL of a standup listed on https://app.geekbot.com/dashboard/ |
+| **Todoist** | | |
+| `TODOIST_TOKEN` | API Token for your Todoist account, if needed | https://todoist.com/prefs/integrations |
+
+### Notion Unofficial API
+
+The official API is new and incomplete. It is missing things like deleting or updating existing blocks, setting page covers, and setting page icons. To fill in this gap, we use the unofficial API. Here are instructions for setup. Instructions are from https://compile.blog/automatic-notion-backup/.
+
+To make it easy, here’s the step-to-step guide to proceed:
+
+1. Open Google Chrome and log in to your Notion account
+1. Navigate to Settings and Members > Settings
+1. Open the Chrome DevTools by pressing ctrl + shift + j (on Windows/Linus) or cmd + option + j (on macOS)
+1. Now proceed with the next instructions carefully
+    - Click on the Network tab
+    - Enable XHR filter
+    - Clear the console by clicking on the cancel icon
+    - Click on the “Export all workspace content“, select your preferred Export format and click on the Export button
+    - Select enqueueTask from the Name column
+    - Move to the Headers tab and scroll down till you see “cookie:“
+    - Copy token_v2 and note down in a text note by name NOTION_TOKEN_V2
+    - Copy spaceId from Request Payload section and note down in a text note by name NOTION_SPACE_ID
+
+![Image showing how to get the space id and token](https://user-images.githubusercontent.com/3074765/118418462-7df4cc00-b686-11eb-97de-43b56bcf3efc.png)
