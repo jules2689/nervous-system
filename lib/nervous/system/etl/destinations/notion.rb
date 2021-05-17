@@ -4,7 +4,7 @@ module Nervous
   module System
     module ETL
       module Destinations
-        class Notion < Base
+        class Notion < ETL::Base
           def initialize(env, collection_id, logger)
             @collection_id = collection_id
             @client = Helpers::NotionAPI.new(env["NOTION_TOKEN"], env["NOTION_UNOFFICIAL_TOKEN"], env["NOTION_SPACE_ID"])

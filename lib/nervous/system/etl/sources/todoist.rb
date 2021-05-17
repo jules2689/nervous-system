@@ -6,7 +6,7 @@ module Nervous
   module System
     module ETL
       module Sources
-        class Todoist < Base
+        class Todoist < ETL::Base
           def initialize(env, logger)
             @client = ::Todoist::Client.create_client_by_token(env["TODOIST_TOKEN"])
             super(logger)

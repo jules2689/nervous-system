@@ -147,3 +147,8 @@ Databases are required to be set up in Notion with specific fields of specific t
 | URL | URL |
 | Status | Select with Open and Archive Options |
 | GeekbotId | number |
+
+## Known Limitations
+
+- Unofficial Notion API must be used to fill in some gaps
+- Todoist content is not synced into Notion yet.

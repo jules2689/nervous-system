@@ -9,7 +9,19 @@ module Nervous
         end
 
         def log(message)
-          @logger.info "├── #{message}"
+          @logger.info "├── [#{self.class.name.split("::").last}] #{message}"
+        end
+
+        def first_log(message)
+          @logger.info "┌── [#{self.class.name.split("::").last}] #{message}"
+        end
+
+        def final_log(message, error: false)
+          if error
+            @logger.error "└── [#{self.class.name.split("::").last}] #{message}"
+          else
+            @logger.info "└── [#{self.class.name.split("::").last}] #{message}"
+          end
         end
       end
     end

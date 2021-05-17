@@ -5,7 +5,7 @@ module Nervous
     module ETL
       module Transformers
         module Geekbot
-          class ActiveRecord < Base
+          class ActiveRecord < ETL::Base
             URL_REGEX = %r{(https?://(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b[-a-zA-Z0-9()@:%_+.~#?&//=]*)}.freeze
 
             def process(row)

@@ -5,7 +5,7 @@ module Nervous
     module ETL
       module Transformers
         module Todoist
-          class ActiveRecord < Base
+          class ActiveRecord < ETL::Base
             def process(row)
               log("Saving row to database")
               record = TodoistRecord.find_or_initialize_by(external_id: row.id)
@@ -16,6 +16,12 @@ module Nervous
               record.status = row.checked == 1 ? "Archived" : "Open"
               record.due_date = due_date(row["due"])
               record.raw_data = row.to_json
+
+              unless record.changed?
+                final_log("No changes. Any further action will be skipped.")
+                return
+              end
+
               record.save!
               record
             end

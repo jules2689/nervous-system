@@ -5,7 +5,7 @@ module Nervous
     module ETL
       module Transformers
         module Todoist
-          class Notion < Base
+          class Notion < ETL::Base
             def process(record)
               log("Transforming to Notion Properties")
               properties = {}

@@ -6,7 +6,7 @@ module Nervous
   module System
     module ETL
       module Sources
-        class Geekbot < Base
+        class Geekbot < ETL::Base
           GEEKBOT_AFTER_TIME = "geekbot_after_time"
 
           def initialize(env, logger)
