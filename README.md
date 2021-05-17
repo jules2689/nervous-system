@@ -8,6 +8,21 @@ Its primary goal is to allow information sources to be added and removed dynamic
 
 Right now this only integrates into Notion but is set up to allow easy integration with other platforms in the future.
 
+## Integrations
+
+- Todoist
+- Geekbot
+- Planned Integrations
+    - GoodReads + Kindle Highlights
+    - Notability via Dropbox
+    - Otter.ai
+    - GitHub Starred Repos
+
+## Known Limitations
+
+- Unofficial Notion API must be used to fill in some gaps
+- Todoist content is not synced into Notion yet.
+
 ## Installation & Usage
 
 1. Create a Gemfile and add the following Gem:
@@ -71,25 +86,6 @@ production:
 
 9. Run `bundle exec run.rb`
 
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/jules2689/nervous-system. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/jules2689/nervous-system/blob/main/CODE_OF_CONDUCT.md).
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Nervous::System project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/jules2689/nervous-system/blob/main/CODE_OF_CONDUCT.md).
-
 ## Tokens and Env Vars
 
 | Name | What is it? | How do I get it? |
@@ -148,7 +144,20 @@ Databases are required to be set up in Notion with specific fields of specific t
 | Status | Select with Open and Archive Options |
 | GeekbotId | number |
 
-## Known Limitations
+## Development
 
-- Unofficial Notion API must be used to fill in some gaps
-- Todoist content is not synced into Notion yet.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/jules2689/nervous-system. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/jules2689/nervous-system/blob/main/CODE_OF_CONDUCT.md).
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Code of Conduct
+
+Everyone interacting in the Nervous::System project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/jules2689/nervous-system/blob/main/CODE_OF_CONDUCT.md).
