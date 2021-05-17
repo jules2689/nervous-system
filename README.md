@@ -4,6 +4,8 @@ The Nervous System is a tool for connecting information sources to a centralized
 
 Its primary goal is to allow information sources to be added and removed dynamically, and to provide a unified interface for accessing information.
 
+Right now this only integrates into Notion but is set up to allow easy integration with other platforms in the future.
+
 ## Installation & Usage
 
 1. Create a Gemfile and add the following Gem:
@@ -31,12 +33,13 @@ Kiba.run(job)
 require "nervous/system/tasks"
 ```
 
-4. Add Tokens and other environments variables to a `.env` file, or to your environment
+4. Setup databases in Notion for the chosen integrations. See [Database Properties](#database-properties) for instructions
+
+5. Add Tokens and other environments variables to a `.env` file, or to your environment
 - Make sure to gitignore the `.env` file.
 - You should provide the tokens specified below under the [Tokens and Env Vars](#tokens-and-env-vars) section
 
-
-5. Add a `db/config.yml` file with the following content:
+6. Add a `db/config.yml` file with the following content:
 ```yml
 development:
   adapter: sqlite3
@@ -57,11 +60,11 @@ production:
   timeout: 5000
 ```
 
-4. Run `bundle install`
+7. Run `bundle install`
 
-5. Run `bundle exec rake db:create db:migrate`
+8. Run `bundle exec rake db:create db:migrate`
 
-6. Run `bundle exec run.rb`
+9. Run `bundle exec run.rb`
 
 
 ## Development
@@ -116,3 +119,26 @@ To make it easy, here’s the step-to-step guide to proceed:
     - Copy spaceId from Request Payload section and note down in a text note by name NOTION_SPACE_ID
 
 ![Image showing how to get the space id and token](https://user-images.githubusercontent.com/3074765/118418462-7df4cc00-b686-11eb-97de-43b56bcf3efc.png)
+
+## Database Properties
+
+Databases are required to be set up in Notion with specific fields of specific types. These are as follows
+### Todoist
+
+| Name | Type of Property |
+| --- | --- |
+| Category | Select |
+| Reminder | Date |
+| Status | Select with Open and Archive Options |
+| external_id | number |
+| project_id | number |
+
+### Geekbot
+
+| Name | Type of Property |
+| --- | --- |
+| Category | Select |
+| Person | Select |
+| URL | URL |
+| Status | Select with Open and Archive Options |
+| GeekbotId | number |
